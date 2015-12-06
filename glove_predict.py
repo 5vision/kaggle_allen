@@ -1,18 +1,9 @@
 import numpy as np
 import pandas as pd
-import re
 from scipy import linalg
 from nltk.corpus import stopwords
 import argparse
-
-
-
-def tokenize(sent):
-    '''Return the tokens of a sentence including punctuation.
-    >>> tokenize('Bob dropped the apple. Where is the apple?')
-    ['Bob', 'dropped', 'the', 'apple', '.', 'Where', 'is', 'the', 'apple', '?']
-    '''
-    return [x.strip() for x in re.split('(\W+)?', sent) if x.strip()]
+from utils import tokenize
 
 
 def predict_answers(data, word2vec, N):
@@ -61,7 +52,6 @@ def predict_answers(data, word2vec, N):
     return pred_answs
 
 if __name__ == '__main__':
-    
     #parsing input arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--fname', type=str, default='validation_set.tsv', help='file name with data')
