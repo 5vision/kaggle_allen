@@ -1,6 +1,7 @@
 import argparse
 import utils
 import numpy as np
+import pandas as pd
 
 #urls  to get toppics
 ck12_url_topic = ['https://www.ck12.org/earth-science/', 'http://www.ck12.org/life-science/', 
@@ -29,10 +30,10 @@ def predict(data, docs_per_q):
 
     for index, row in data.iterrows():
         #get answers words
-        w_A = set(utils.tokenize(r['answerA']))
-        w_B = set(utils.tokenize(r['answerB']))
-        w_C = set(utils.tokenize(r['answerC']))
-        w_D = set(utils.tokenize(r['answerD']))
+        w_A = set(utils.tokenize(row['answerA']))
+        w_B = set(utils.tokenize(row['answerB']))
+        w_C = set(utils.tokenize(row['answerC']))
+        w_D = set(utils.tokenize(row['answerD']))
     
         sc_A = 0
         sc_B = 0
@@ -57,7 +58,7 @@ def predict(data, docs_per_q):
 
         res.append(['A','B','C','D'][np.argmax([sc_A, sc_B, sc_C, sc_D])])
         
-        return res
+    return res
 
 if __name__ == '__main__':
     #parsing input arguments
