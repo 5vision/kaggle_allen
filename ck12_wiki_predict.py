@@ -74,7 +74,7 @@ if __name__ == '__main__':
     #read data
     data = pd.read_csv('data/' + args.fname, sep = '\t' )
     #predict
-    res = main(data, args.docs_per_q)
+    res = predict(data, args.docs_per_q)
     #save result
     pd.DataFrame({'id': list(data['id']), 'correctAnswer': res})[['id', 'correctAnswer']].to_csv("prediction.csv", index = False)
     
