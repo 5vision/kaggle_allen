@@ -1,0 +1,12 @@
+Two simple solutions for Allen Institute Kaggle competiotion.
+
+1) Glove based solution.
+The already computed wiki glove word2vec is used co calculate cosine similaruty of questions and answers. Scores are around 0.31875
+Run:
+- get glove data - fetch_glove_data.sh
+- get prediciton - glove_predict.py
+
+2)IR based part:
+Retrivieng ck12 topics, then get wiki pages for each page and then ranking documents for question and answer pair 
+Run:
+To get wiki pages and prediction - python ck12_wiki_predict.py --get_data 1
